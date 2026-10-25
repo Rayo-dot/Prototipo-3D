@@ -24,6 +24,9 @@ SCAD, mediante geometría de presentación. No es un conversor automático del
 archivo SCAD ni un archivo para fabricar piezas. Cambios posteriores en SCAD
 deben aplicarse también en `web/app.js`.
 
+El monitor tiene una abertura provisional de 86 × 52 mm y un borde de 5 mm
+(exterior de 96 × 62 mm). Sigue pendiente de elegir el componente comercial.
+
 ## Publicar para abrir con un enlace
 
 ### GitHub Pages de este proyecto

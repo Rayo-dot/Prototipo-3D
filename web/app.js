@@ -65,20 +65,21 @@ for(const x of [-134,134]){
 }
 for(const x of [-113,113])for(const y of [-25,63]){const shape=new THREE.Shape();shape.absarc(0,0,6,0,Math.PI*2);roundHole(shape,0,0,1.7);extrude(shape,12,shell,bodyMat,x,y,48);}
 
-// Tapa, ventana provisional 60 x 30, marco 96 x 66.
+// Tapa: abertura provisional ampliada; borde estrecho de 5 mm.
 const lid=group('monitor');partGroups.monitor=lid;
 const lidShape=rounded(250,150,8);
-const monitorX=35+60/2-125,monitorY=85+30/2-75;
-rectHole(lidShape,monitorX-30,monitorY-15,60,30);
+const monitor={width:86,height:52,x:22,z:74,border:5};
+const monitorX=monitor.x+monitor.width/2-125,monitorY=monitor.z+monitor.height/2-75;
+rectHole(lidShape,monitorX-monitor.width/2,monitorY-monitor.height/2,monitor.width,monitor.height);
 for(const x of [10,40,70])roundHole(lidShape,x,37,2.5);
 roundHole(lidShape,95,25,4);
 for(const x of [-113,113])for(const y of [-25,63])roundHole(lidShape,x,y,1.7);
 extrude(lidShape,3,lid,lidMat,0,0,60);
-const surround=rounded(96,66,1);rectHole(surround,-30,-15,60,30);extrude(surround,1,lid,lidMat,monitorX,monitorY,63);
+const surround=rounded(monitor.width+2*monitor.border,monitor.height+2*monitor.border,1);rectHole(surround,-monitor.width/2,-monitor.height/2,monitor.width,monitor.height);extrude(surround,1,lid,lidMat,monitorX,monitorY,63);
 // Placeholder comercial: la abertura definitiva queda pendiente.
-box(59,29,1,lid,monitorX,monitorY,61.5,mat('#203f46',{roughness:.25}));
-label('MONITOR',49,8,lid,monitorX,monitorY+3,62.1,'#c5ddd7',56);
-label('MODELO POR DEFINIR',52,6,lid,monitorX,monitorY-5,62.1,'#8eada9',44);
+box(monitor.width-1,monitor.height-1,1,lid,monitorX,monitorY,61.5,mat('#203f46',{roughness:.25}));
+label('MONITOR',70,10,lid,monitorX,monitorY+5,62.1,'#c5ddd7',56);
+label('MODELO POR DEFINIR',72,7,lid,monitorX,monitorY-7,62.1,'#8eada9',44);
 const ledNames=['Encendido','Alerta','Falla'];
 const ledColors=['#58b797','#ddaf54','#c77969'];
 for(let i=0;i<3;i++){cylinder(2.2,2,lid,10+i*30,37,63.1,mat(ledColors[i],{emissive:ledColors[i],emissiveIntensity:.12}), 'z');label(ledNames[i],30,8,lid,10+i*30,48,64);}
@@ -144,7 +145,7 @@ for(let i=0;i<16;i++){const dot=new THREE.Mesh(new THREE.SphereGeometry(1.9,12,8
 
 const details={
  carcasa:['01 · CARCASA','Protección y acceso al mantenimiento','Carcasa de 250 × 150 × 120 mm, paredes de 3 mm y tapa desmontable con cuatro fijaciones M3. Dos orejas permiten el montaje en pared.'],
- monitor:['02 · INTERFAZ','Monitor e indicadores del equipo','Abertura provisional de 60 × 30 mm con marco de 96 × 66 mm. El monitor comercial está pendiente de elección. Los testigos indican Encendido, Alerta y Falla.'],
+ monitor:['02 · INTERFAZ','Monitor e indicadores del equipo','Abertura provisional ampliada de 86 × 52 mm, con borde de 5 mm y marco exterior de 96 × 62 mm. El monitor comercial está pendiente de elección. Los testigos indican Encendido, Alerta y Falla.'],
  filtros:['03 · FILTRACIÓN','Dos filtros conectados en serie','F2 está a la derecha y recibe el agua primero; F1 está a la izquierda. Vasos de 70 mm de diámetro y conjuntos de 160 mm de altura. Cartuchos representativos, sin especificar todavía su función de filtración.'],
  sensor:['04 · MEDICIÓN','Sensor de caudal después de los filtros','Representación comercial de 60 × 35 × 35 mm. Se ubica a la izquierda, después de F1 y antes de la salida. Tamaño y conexiones pendientes del sensor elegido.'],
  electronica:['05 · CONTROL','Electrónica separada del recorrido del agua','Placa referencial de 60 × 30 × 15 mm sobre una bandeja superior. Una división separa los compartimientos. El prensaestopas lateral representa la entrada de alimentación de baja tensión. No se ha validado estanqueidad.']
