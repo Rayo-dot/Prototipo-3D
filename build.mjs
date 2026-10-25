@@ -1,0 +1,13 @@
+import { build } from 'esbuild';
+import { readFile, mkdir, writeFile, copyFile } from 'node:fs/promises';
+const result = await build({entryPoints:['web/app.js'],bundle:true,minify:true,format:'iife',target:['es2020'],write:false,legalComments:'inline'});
+const css = await readFile('web/style.css','utf8');
+const html = (await readFile('web/template.html','utf8')).replace('/* STYLES */',()=>css).replace('/* APPLICATION */',()=>result.outputFiles[0].text.replace(/<\/script/gi,'<\\/script'));
+await mkdir('dist',{recursive:true});
+await writeFile('dist/index.html',html);
+await copyFile('node_modules/three/LICENSE','dist/THREE-LICENSE.txt');
+await mkdir('docs',{recursive:true});
+await writeFile('docs/index.html',html);
+await writeFile('docs/.nojekyll','');
+await copyFile('node_modules/three/LICENSE','docs/THREE-LICENSE.txt');
+console.log('Sitio creado en dist/index.html. Sin dependencias de Internet; tambien abre como archivo local.');

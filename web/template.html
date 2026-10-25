@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a6664">
+  <title>Medidor de agua · Prototipo 3D</title>
+  <style>/* STYLES */</style>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="#" aria-label="Medidor inteligente de agua, inicio"><span class="brand-mark">◈</span><span>AGUA<span class="brand-small">PROTOTIPO DOMICILIARIO</span></span></a>
+    <div class="header-right"><span class="status"><i></i> MODELO INTERACTIVO</span><button id="present" class="button outline">⛶ <span>Pantalla completa</span></button></div>
+  </header>
+  <main>
+    <aside class="intro">
+      <div class="eyebrow">DISEÑO DE PRODUCTO <span>01 / 03</span></div>
+      <h1>Medidor inteligente<br>de <em>agua.</em></h1>
+      <p class="lead">Dos etapas de filtración. Un equipo para visualizar el consumo de agua en el hogar.</p>
+      <div class="specs"><div><strong>250</strong><span>ANCHO · mm</span></div><div><strong>150</strong><span>ALTO · mm</span></div><div><strong>120</strong><span>FONDO · mm</span></div></div>
+      <p class="spec-note">Dimensiones de la carcasa. Los filtros y las conexiones sobresalen.</p>
+      <div class="section-label">EXPLORA EL EQUIPO</div>
+      <div class="component-list" id="components">
+        <button data-component="carcasa"><span class="component-number">01</span> Carcasa y montaje <span>↗</span></button>
+        <button data-component="monitor"><span class="component-number">02</span> Monitor e indicadores <span>↗</span></button>
+        <button data-component="filtros"><span class="component-number">03</span> Filtros F1 y F2 <span>↗</span></button>
+        <button data-component="sensor"><span class="component-number">04</span> Sensor de caudal <span>↗</span></button>
+        <button data-component="electronica"><span class="component-number">05</span> Electrónica y alimentación <span>↗</span></button>
+      </div>
+      <div class="dry-note"><span>ⓘ</span><p><strong>Maqueta de demostración</strong><br>Diseño sin agua a presión. Las piezas impresas no están validadas para agua potable ni presión.</p></div>
+    </aside>
+    <section class="viewer" aria-label="Visor interactivo del medidor">
+      <div class="viewer-top"><div><span class="eyebrow">VISTA DEL PROTOTIPO</span><h2 id="view-title">Equipo ensamblado</h2></div><span class="version">V.03</span></div>
+      <div class="view-tabs" role="group" aria-label="Vista del modelo"><button class="active" data-view="assembled" aria-pressed="true">Ensamblado</button><button data-view="internal" aria-pressed="false">Interior</button><button data-view="exploded" aria-pressed="false">Explosionado</button></div>
+      <div id="viewport"><div id="loading">Preparando el modelo 3D…</div><div id="webgl-error" role="alert" hidden>No se pudo iniciar el visor 3D. Activa la aceleración gráfica del navegador o prueba otro navegador actualizado.</div></div>
+      <div class="viewer-bottom"><span class="gesture">↔ Arrastra para girar <span>·</span> Rueda o pellizca para acercar</span><div class="camera-buttons"><button id="front" aria-label="Ver el modelo de frente" title="Vista frontal">Frente</button><button id="reset" aria-label="Restablecer la cámara" title="Restablecer vista">↺</button><button id="capture" aria-label="Guardar imagen del modelo" title="Guardar imagen PNG">↓ PNG</button></div></div>
+      <div class="detail-card" aria-live="polite"><span id="detail-tag" class="detail-tag">EL CONJUNTO</span><h3 id="detail-title">Una mirada al sistema completo</h3><p id="detail-text">Gira el modelo o selecciona un componente para conocer su función. Abre la vista interior para descubrir la distribución del equipo.</p></div>
+    </section>
+  </main>
+  <footer class="flow-section"><div class="flow-heading"><span class="eyebrow">RECORRIDO DEL AGUA</span><p>De derecha a izquierda, visto de frente.</p></div><div class="flow-track" aria-label="Entrada, filtro F2, filtro F1, sensor, salida"><span>Salida</span><b>←</b><span>Sensor</span><b>←</b><span><i>F1</i> Filtro izquierdo</span><b>←</b><span><i>F2</i> Filtro derecho</span><b>←</b><span>Entrada</span></div><button id="flow" class="button flow-button" aria-pressed="false"><span>▷</span> Mostrar recorrido</button></footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script>/* APPLICATION */</script>
+</body>
+</html>
