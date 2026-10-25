@@ -26,6 +26,25 @@ deben aplicarse también en `web/app.js`.
 
 ## Publicar para abrir con un enlace
 
+### GitHub Pages de este proyecto
+
+La pagina esta subida a `Rayo-dot/Prototipo-3D`, rama `main`, carpeta `docs/`.
+La integracion pudo subir archivos pero GitHub denego activar Pages por API
+(`Resource not accessible by integration`, HTTP 403).
+
+Para activar la publicacion desde la cuenta propietaria:
+
+1. Abre https://github.com/Rayo-dot/Prototipo-3D/settings/pages
+2. En **Build and deployment**, selecciona **Deploy from a branch**.
+3. En **Branch**, selecciona **main**, carpeta **/docs**, y pulsa **Save**.
+4. Espera a que GitHub indique que termino el despliegue y abre el enlace que
+   muestra la configuracion de Pages. La direccion prevista es
+   https://rayo-dot.github.io/Prototipo-3D/; no se considera publicada hasta
+   comprobar que el despliegue termino y que el enlace funciona.
+
+`npm run build` actualiza tanto `dist/` como `docs/`. Para publicar cambios,
+se debe subir la version actualizada de `docs/` a `main`.
+
 La página está construida, pero este trabajo no la publica automáticamente.
 `medidor-sitio-web.zip` contiene `index.html` en la raíz y la licencia de Three.js.
 Se puede cargar el contenido de `dist/` en un alojamiento estático como GitHub
